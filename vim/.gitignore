@@ -1,0 +1,4 @@
+bundle/*
+*.un
+*.un~
+!bundle/.empty
