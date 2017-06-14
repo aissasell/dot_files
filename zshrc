@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jtiki/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_GITHUB_API_TOKEN=5d85ef1a66765283fc04921c6bad152a103aee06;
 export WORKON_HOME=~/.venvs;
-source /usr/local/bin/virtualenvwrapper.sh;
+#source /usr/local/bin/virtualenvwrapper.sh;
 set editing-mode vi;
 bindkey -v;
 export KEYTIMEOUT=1;
