@@ -49,7 +49,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Library/Python/2.7/site-packages"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Library/Python/2.7/site-packages:/home/jeremytiki/Apps/*/*.x"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -80,7 +80,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export HOMEBREW_GITHUB_API_TOKEN=5d85ef1a66765283fc04921c6bad152a103aee06;
-export WORKON_HOME=~/.venvs;
+export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=/c/msys/1.0
+source /usr/bin/virtualenvwrapper.sh
+export PATH=/usr/bin:$PATH
+export EDITOR=vim
 #source /usr/local/bin/virtualenvwrapper.sh;
 set editing-mode vi;
 bindkey -v;
@@ -95,4 +99,3 @@ zle -N zle-keymap-select;
 
 #add rust package
 export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
-tmux new-session -s startup;
