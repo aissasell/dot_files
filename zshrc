@@ -49,7 +49,6 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Library/Python/2.7/site-packages:/home/jeremytiki/Apps/*/*.x"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -99,3 +98,4 @@ zle -N zle-keymap-select;
 
 #add rust package
 export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
+export TERM=xterm-256color

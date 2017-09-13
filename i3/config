@@ -3,8 +3,8 @@ set $mod Mod4
 
 set $term i3-sensible-terminal
 
-set $workspace1 "terminal"
-set $workspace2 "firefox"
+set $workspace1 "1"
+set $workspace2 "2"
 set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
@@ -12,7 +12,7 @@ set $workspace6 "6"
 set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
-set $workspace10 "email"
+set $workspace10 "10"
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -39,10 +39,10 @@ mode "resize" {
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -53,10 +53,10 @@ bindsym $mod+m mode "move" focus floating
 mode "move" {
     bindsym $mod+Tab focus right
 
-    bindsym Left  move left
-    bindsym Down  move down
-    bindsym Up    move up
-    bindsym Right move right
+    bindsym Left move left 2 px or 2 ppt
+    bindsym Down move down 2 px or 2 ppt
+    bindsym Up move up 2 px or 2 ppt
+    bindsym Right move right 2 px or 2 ppt
 
     bindsym h     move left
     bindsym j     move down
@@ -80,6 +80,8 @@ bindsym $mod+d exec rofi -show run
 
 #Screenshots
 bindsym $mod+p exec --no-startup-id "scrot --delay 1 -e 'mv $f ~/Pictures/screnshots/'"
+bindsym --release $mod+Shift+p exec "scrot -s -e 'mv $f ~/Pictures/screnshots/'"
+bindsym $mod+o exec dm-tool lock
 
 #Increase/Decrease gaps size
 bindsym $mod+s gaps inner current plus 5
@@ -207,23 +209,31 @@ exec --no-startup-id compton -f
 exec_always --no-startup-id /usr/bin/setxkbmap -option "ctrl:swapcaps"
 
 ## Startup apps
-exec $term
+exec $term -x "tmux new -s Basic"
 
 # Start up a terminal and move to scratchpad
-exec $term -t Scratchpad
-for_window [title="Scratchpad"] floating enable, move scratchpad
+exec $term -t Dropdown -x "tmux new -s Dropdown"
+for_window [title="Dropdown"] floating enable, move scratchpad
 
-exec firefox --new-window
+exec firefox-nightly --new-window
 for_window [title="^StartPage Search Engine*"] move to workspace $workspace2
 assign [title="^StartPage Search Engine*"] → $workspace2 
 # Start todoist
-exec firefox --new-window "todoist.com"
+exec --no-startup-id todoist
 for_window [title="^Todoist*"] move to workspace $workspace9
-assign [title="^Todoist*"] → $workspace9 
-
-exec thunderbird --no-startup-id
-for_window [class="Thunderbird"] move to workspace $workspace10
-assign [class="Thunderbird"] → $workspace10
+assign [title="^Todoist*"] → $workspace9
+# Start Inbox
+exec --no-startup-id inbox
+for_window [class="^inbox-nativefier*"] move to workspace $workspace10
+assign [class="^inbox-nativefier*"]  → $workspace10
+# Start Calendar
+exec --no-startup-id calendar
+for_window [class="^calendar-nativefier*"] move to workspace $workspace10
+assign [class="^calendar-nativefier*"]  → $workspace10
+# STart Texts
+exec --no-startup-id texts
+for_window [class="texts-nativefier*"] move to workspace $workspace8
+assign [class="^texts-nativefier*"]  → $workspace8
 
 ### UI
 # Set Font
