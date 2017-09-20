@@ -99,3 +99,4 @@ zle -N zle-keymap-select;
 #add rust package
 export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
 export TERM=xterm-256color
+alias copy="xclip -sel c"

@@ -140,6 +140,11 @@ map <leader>{ <esc>:vertical resize +5<cr>
 map <leader>tn <esc>:tabnext<cr>
 map <leader>tp <esc>:tabprevious<cr>
 
+" Easier buffer movement
+nnoremap <silent> bp :bprevious<CR>
+nnoremap <silent> bn :bnext<CR>
+nnoremap <silent> bl :ls<CR>
+
 " Move down one line only
 map j gj
 map k gk
@@ -221,7 +226,7 @@ let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.pyo     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)|bower_components|node_modules$',
   \ 'file': '\v\.(exe|so|dll|pyc|swp|undo|pyo|zip)$',
   \ }
 
