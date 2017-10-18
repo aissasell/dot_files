@@ -61,12 +61,12 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/syntastic'
 Plugin 'kshenoy/vim-signature'
 Plugin 'spolu/dwm.vim'
-Plugin 'Valloric/MatchTagAlways'
+"Plugin 'Valloric/MatchTagAlways'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
-
+Plugin 'posva/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -178,6 +178,10 @@ set shiftwidth=4
 set softtabstop=4
 set textwidth=79
 set expandtab
+
+autocmd BufNewFile,BufRead *.vue   set tabstop=2
+autocmd BufNewFile,BufRead *.vue   set shiftwidth=2
+autocmd BufNewFile,BufRead *.vue   set softtabstop=2
 
 set fileformat=unix " Force Unix filetypes
 au FocusLost * :wa " Auto save on focus off

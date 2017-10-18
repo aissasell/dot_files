@@ -1,4 +1,4 @@
-# Setup basic variables
+X# Setup basic variables
 set $mod Mod4
 
 set $term i3-sensible-terminal
@@ -165,6 +165,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Modified resize
+bindsym $mod+Shift+y resize shrink width 10px or 10ppt
+bindsym $mod+Shift+u resize shrink height 10px or 10ppt
+bindsym $mod+Shift+i resize grow width 10px or 10ppt
+bindsym $mod+Shift+o resize grow height 10px or 10ppt
+
 # Switch to resize mode
 bindsym $mod+r mode "resize"
 
@@ -207,7 +213,7 @@ exec $term -e "tmuxinator start Basic"
 
 # Start up a terminal and move to scratchpad
 exec $term -t Dropdown -e "tmux new -s Dropdown"
-for_window [title="^Dropdown$"] floating enable, move scratchpad
+for_window [title="Dropdown"] floating enable, move scratchpad
 
 exec firefox-nightly --new-window
 for_window [title="^StartPage Search Engine*"] move to workspace $workspace2
