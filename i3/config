@@ -25,6 +25,9 @@ set $urgent-bg-color     #E53935
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+#exec_always --no-startup-id gnome-power-manager
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -53,10 +56,10 @@ bindsym $mod+m mode "move" focus floating
 mode "move" {
     bindsym $mod+Tab focus right
 
-    bindsym Left move left 2 px or 2 ppt
-    bindsym Down move down 2 px or 2 ppt
-    bindsym Up move up 2 px or 2 ppt
-    bindsym Right move right 2 px or 2 ppt
+    bindsym Left move left 2 px
+    bindsym Down move down 2 px
+    bindsym Up move up 2 px
+    bindsym Right move right 2 px
 
     bindsym h     move left
     bindsym j     move down
@@ -76,7 +79,9 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run
+#bindsym $mod+d exec rofi -show run
+#bindsym $mod+d exec rofi -modi window#run#ssh#bang:/home/jeremytiki/.config/rofi/scripts/rofi-bangs.sh -show bang
+bindsym $mod+d exec /home/jeremytiki/.config/rofi/scripts/rofi-chooser.sh
 
 #Screenshots
 bindsym $mod+p exec --no-startup-id "scrot --delay 1 -e 'mv $f ~/Pictures/screnshots/'"
@@ -194,13 +199,14 @@ bindsym $mod+u scratchpad show
 
 ### Start up items
 # Set monitor information
-exec_always --no-startup-id xrandr --output eDP --mode 1920x1200 --brightness 1
+exec_always --no-startup-id xrandr --output eDP --mode 1920x1080 --brightness 1
 # Set background
 exec_always --no-startup-id feh --bg-scale ~/.wallpaper.jpg
 # Start compton for effects
 exec --no-startup-id compton -f
 # rebind caps lock to control
 exec_always --no-startup-id /usr/bin/setxkbmap -option "ctrl:swapcaps"
+exec_always --no-startup-id greenclip daemon
 
 ## Startup apps
 exec $term -e "tmuxinator start Basic"
