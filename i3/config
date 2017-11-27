@@ -1,7 +1,8 @@
 # Setup basic variables
 set $mod Mod4
 
-set $term i3-sensible-terminal
+#set $term i3-sensible-terminal
+set $term termite
 
 set $workspace1 "1"
 set $workspace2 "2"
@@ -89,8 +90,8 @@ bindsym --release $mod+Shift+p exec "scrot -s -e 'mv $f ~/Pictures/screnshots/'"
 bindsym $mod+Shift+o exec dm-tool lock
 
 #Increase/Decrease gaps size
-bindsym $mod+s gaps inner current plus 5
-bindsym $mod+Shift+s gaps inner current minus 5
+bindsym $mod+x gaps inner current plus 5
+bindsym $mod+Shift+x gaps inner current minus 5
 
 bindsym $mod+z gaps outer current plus 5
 bindsym $mod+Shift+z gaps outer current minus 5
@@ -127,8 +128,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -179,12 +180,17 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Keyboard brightness controls
-bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up # increase screen brightness
-bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down # decrease screen brightness
+#bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up # increase screen brightness
+#bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down # decrease screen brightness
+
+#screen brightness 
+bindsym XF86MonBrightnessDown exec --no-startup-id "cd /sys/class/backlight/gmux_backlight/; cur=$(cat brightness); cur=$((cur-20)) ; if [ $cur -lt 1 ]; then cur=5; fi; echo $cur > brightness " 
+bindsym XF86MonBrightnessUp   exec --no-startup-id "cd /sys/class/backlight/gmux_backlight/; cur=$(cat brightness); cur=$((cur+20)) ; if [ $cur -gt 1023 ]; then cur=1023; fi; echo $cur > brightness " 
+
 
 # Screen brightness controls
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 # flash window
 bindsym $mod+BackSpace exec "transset-df -a -m 0; sleep .1; transset-df -a -m 1; sleep .1; transset-df -a -m 0; sleep .1; transset-df -a -m 1;"
@@ -206,28 +212,32 @@ exec_always --no-startup-id feh --bg-scale ~/.wallpaper.jpg
 exec --no-startup-id compton -f
 # rebind caps lock to control
 exec_always --no-startup-id /usr/bin/setxkbmap -option "ctrl:swapcaps"
-exec_always --no-startup-id greenclip daemon
+exec --no-startup-id greenclip daemon
 
 ## Startup apps
 exec $term -e "tmuxinator start Basic"
+exec --no-startup-id dunst
 
 # Start up a terminal and move to scratchpad
 exec $term -t Dropdown -e "tmux new -s Dropdown"
 for_window [title="^Dropdown$"] floating enable, move scratchpad
 
 exec firefox-nightly --new-window
-for_window [title="^StartPage Search Engine*"] move to workspace $workspace2
-assign [title="^StartPage Search Engine*"] → $workspace2 
+for_window [class="^Nightly"] move to workspace $workspace2
+assign [title="^Nightly"] → $workspace2 
 
+exec discord
+for_window [class="^discord"] move to workspace $workspace7
+assign [title="^discord"] → $workspace7 
 # Start todoist
 exec --no-startup-id todoist
 for_window [title="^Todoist*"] move to workspace $workspace9
 assign [title="^Todoist*"] → $workspace9
 
 # Start Inbox
-exec --no-startup-id inbox
-for_window [class="^inbox-nativefier*"] move to workspace $workspace10
-assign [class="^inbox-nativefier*"]  → $workspace10
+exec --no-startup-id protonmail
+for_window [class="^proton-mail-nativefier*"] move to workspace $workspace10
+assign [class="^proton-mail-nativefier*"]  → $workspace10
 
 # Start Calendar
 exec --no-startup-id calendar

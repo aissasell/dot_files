@@ -82,7 +82,7 @@ export HOMEBREW_GITHUB_API_TOKEN=5d85ef1a66765283fc04921c6bad152a103aee06;
 export WORKON_HOME=$HOME/.virtualenvs
 export MSYS_HOME=/c/msys/1.0
 source /usr/bin/virtualenvwrapper.sh
-export PATH=/usr/bin:$PATH
+export PATH=/etc/openvpn/ovpn_tcp/:/usr/bin:$PATH
 export EDITOR=vim
 #source /usr/local/bin/virtualenvwrapper.sh;
 set editing-mode vi;
