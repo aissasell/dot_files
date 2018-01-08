@@ -77,6 +77,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias s="sudo"
+alias pyt="python"
 
 export HOMEBREW_GITHUB_API_TOKEN=5d85ef1a66765283fc04921c6bad152a103aee06;
 export WORKON_HOME=$HOME/.virtualenvs

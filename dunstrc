@@ -1,4 +1,5 @@
 [global]
+    timeout = .5
     font = lemon 8
     allow_markup = yes
     format = "%s\n%b"
@@ -81,5 +82,4 @@
 [Transmission]
     appname = Transmission
     format = "<b>%s</b>\n%b"
-    new_icon = Transmission
     timeout = 2000

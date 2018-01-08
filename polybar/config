@@ -74,7 +74,6 @@ modules-center = i3
 inherit = bar/base
 bottom = true
 modules-left = date wlan battery fsroot memory cpu temperature volume updates
-
 tray-position = right
 tray-padding = 2
 tray-detached = false
@@ -237,7 +236,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 [module/date]
 type = internal/date
 interval = 1
-date =   %d-%m-%Y 
+date =   %m-%d-%Y 
 date-alt = " %Y-%m-%d"
 time = %I:%M%p
 time-alt = %H:%M:%S
@@ -299,15 +298,15 @@ animation-charging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 75
 
-format = <ramp> <label>
-;format-underline = #f50a4d
+format = <label>
+format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label =  %temperature%
-label-warn =  %temperature%
+label =   %temperature%
+label-warn =   %temperature%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 

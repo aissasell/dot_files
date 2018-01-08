@@ -277,11 +277,10 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color #00ff
 # Bar setup
 bar {
 	status_command polybar BarTop
-	tray_output primary
 	separator_symbol "//"
 	strip_workspace_numbers yes
 
-	position bottom
+	position top
 	mode invisible
 
 	colors {
@@ -290,7 +289,7 @@ bar {
 	    statusline		$fg.color	
 	    separator		$alt.color
 
-	    #class		border		background	font
+	    #class              border		background	font
 	    focused_workspace	$bg.color	$alt.color	$fg.color
 	    inactive_workspace	$bg.color	$bg.color	$fg.color
 	    active_workspace	$bg.color	$alt.color	$fg.color
@@ -312,7 +311,7 @@ bar {
 	    statusline		$fg.color	
 	    separator		$alt.color
 
-	    #class		border		background	font
+	    #class              border		background	font
 	    focused_workspace	$bg.color	$alt.color	$fg.color
 	    inactive_workspace	$bg.color	$bg.color	$fg.color
 	    active_workspace	$bg.color	$alt.color	$fg.color
