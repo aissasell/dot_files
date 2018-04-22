@@ -19,6 +19,7 @@ COMMANDS["websearch"]="~/.config/rofi/scripts/websearch.sh"
 ORDERS+=('websearch')
 
 ROFI_START_LAUNCHER='rofi -modi "run'
+#ROFI_END_LAUNCHER=',ssh,window" -show run -theme sidetab.rasi'
 ROFI_END_LAUNCHER=',ssh,window" -show run'
 
 # This for loop loops over ORDERS by key (0, 1, 2...) and assigns the values to
@@ -30,4 +31,5 @@ do
 done
 
 # The final script is launched
-eval $ROFI_START_LAUNCHER$ROFI_END_LAUNCHER
+#eval $ROFI_START_LAUNCHER$ROFI_END_LAUNCHER
+eval rofi -show run

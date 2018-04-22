@@ -8,12 +8,12 @@
 ;=====================================================
 
 [colors]
-background = #ee2f343f
+background = #ff2f343f
 background-alt = #f72f343f
-foreground = #f3f4f5
+foreground = #cccccc
 foreground-alt = #f3f4f5
 foreground-dim = #676e7d
-primary = #ffb52a
+primary = #b2535b
 secondary = #e60053
 alert = #ff6600
 
@@ -61,7 +61,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Monaco:size=13:weight=bold
+font-0 = Roboto-Regular:size=13:weight=bold
 font-1 = FontAwesome:size=13
 font-2 = siji:pixelsize=13;1
 
@@ -69,16 +69,18 @@ font-2 = siji:pixelsize=13;1
 [bar/BarTop]
 inherit = bar/base
 modules-center = i3
-
-[bar/BarBottom]
-inherit = bar/base
-bottom = true
-modules-left = date wlan battery fsroot memory cpu temperature volume updates
+modules-right = battery wlan isrunning-openvpn date 
+modules-left = fsroot memory cpu temperature volume updates
 tray-position = right
 tray-padding = 2
 tray-detached = false
 tray-maxsize = 16
-tray-background = ${colors.background-alt}
+tray-transparent = false
+tray-background = #ff0000
+
+[bar/BarBottom]
+inherit = bar/base
+bottom = true
 tray-offset-x = 0
 tray-offset-y = 0
 ;tray-padding = 0
@@ -190,7 +192,7 @@ card = intel_backlight
 type = internal/cpu
 interval = 2
 format-prefix = " "
-;format-underline = #f90000
+format-underline = #f90000
 label = %percentage%%
 
 
@@ -401,4 +403,11 @@ format-unmounted-foreground = ${self.format-unmounted-underline}
 [module/updates]
 type = custom/script
 exec = ~/.config/polybar/pkg.sh
+format-underline = #b2535b
 interval = 90
+
+[module/isrunning-openvpn]
+type = custom/script
+format-underline = #b2535b
+exec = ~/.config/polybar/isrunning-openvpn.sh
+interval = 1

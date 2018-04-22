@@ -5,7 +5,7 @@ export ZSH=~/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="blokkzh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -23,10 +23,10 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -79,17 +79,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias s="sudo"
 alias pyt="python"
+alias py="python"
 
-export HOMEBREW_GITHUB_API_TOKEN=5d85ef1a66765283fc04921c6bad152a103aee06;
 export WORKON_HOME=$HOME/.virtualenvs
-export MSYS_HOME=/c/msys/1.0
-source /usr/bin/virtualenvwrapper.sh
 export PATH=/etc/openvpn/ovpn_tcp/:/usr/bin:$PATH
+
 export EDITOR=vim
-#source /usr/local/bin/virtualenvwrapper.sh;
 set editing-mode vi;
 bindkey -v;
 export KEYTIMEOUT=1;
+
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
@@ -98,7 +97,8 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init;
 zle -N zle-keymap-select;
 
-#add rust package
-export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
 export TERM=xterm-256color
 alias copy="xclip -sel c"
+
+# add pipenv completion
+eval "$(pipenv --completion)"

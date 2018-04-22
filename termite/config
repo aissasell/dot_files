@@ -3,8 +3,8 @@ allow_bold = true
 #audible_bell = false
 clickable_url = true
 #dynamic_title = true
-#font = Inconsolata 18
-font = Inconsolata 28
+font = Inconsolata 22
+#font = Inconsolata 28
 fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
@@ -68,7 +68,8 @@ color12 = #94bff3
 color13 = #ec93d3
 color14 = #93e0e3
 color15 = #ffffff
-#background: #101010
+background = "#2f343f"
+foreground = "#cccccc"
 #foreground: #d0d0d0
 #cursorColor: #d0d0d0
 #color0: #101010
