@@ -204,6 +204,9 @@ bindsym $mod+u scratchpad show
 
 
 ### Start up items
+# Gnome integration
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
 # Set monitor information
 exec_always --no-startup-id xrandr --output eDP --mode 1920x1080 --brightness 1
 # Set background
@@ -227,20 +230,35 @@ for_window [class="^Firefox"] move to workspace $workspace2
 assign [title="^Firefox"] → $workspace2 
 
 
+exec SpiderOakONE
+for_window [class="^SpiderOakONE"] move to workspace $workspace6
+assign [title="^SpiderOakONE"] → $workspace6
 assign [class="Transmission*"] → $workspace6 
+
 
 exec discord
 for_window [class="^discord"] move to workspace $workspace7
 assign [title="^discord"] → $workspace7 
 
-# STart Texts
+# Start Texts
 exec --no-startup-id signal-desktop
 for_window [class="Signal"] move to workspace $workspace8
 assign [class="Signal"]  → $workspace8
+
 # Start todoist
 exec --no-startup-id todoist
 for_window [title="^Todoist*"] move to workspace $workspace9
 assign [title="^Todoist*"] → $workspace9
+
+# Start Toggl
+exec --no-startup-id toggldesktop
+for_window [class="Toggl Desktop"] move to workspace $workspace9
+assign [class="Toggl Desktop"]  → $workspace9
+
+# Start Toggl
+exec --no-startup-id nixnote2
+for_window [class="nixnote2"] move to workspace $workspace9
+assign [class="nixnote2"]  → $workspace9
 
 # Start Inbox
 exec --no-startup-id protonmail

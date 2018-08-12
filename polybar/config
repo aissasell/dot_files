@@ -68,6 +68,7 @@ font-2 = siji:pixelsize=13;1
 
 [bar/BarTop]
 inherit = bar/base
+bottom = false
 modules-center = i3
 modules-right = battery wlan isrunning-openvpn date 
 modules-left = fsroot memory cpu temperature volume updates

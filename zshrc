@@ -77,18 +77,29 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# Quick access to common commands
 alias s="sudo"
 alias pyt="python"
 alias py="python"
+alias runserver="python manage.py runserver"
+alias rs="python manage.py runserver"
+alias pmr="python manage.py runserver"
+alias copy="xclip -sel c"
 
+# PIPENV setup
 export WORKON_HOME=$HOME/.virtualenvs
-export PATH=/etc/openvpn/ovpn_tcp/:/usr/bin:$PATH
 
+# Add some extra paths
+export PATH=/home/jeremytiki/.gem/ruby/2.5.0/bin:/etc/openvpn/ovpn_tcp/:/usr/bin:$PATH
+
+# Set default editor
 export EDITOR=vim
 set editing-mode vi;
 bindkey -v;
 export KEYTIMEOUT=1;
 
+# Additional vim setup
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
@@ -97,8 +108,5 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init;
 zle -N zle-keymap-select;
 
+# Force xterm to use 256 color
 export TERM=xterm-256color
-alias copy="xclip -sel c"
-
-# add pipenv completion
-eval "$(pipenv --completion)"

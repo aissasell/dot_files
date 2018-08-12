@@ -52,7 +52,7 @@ Plugin 'tomasr/molokai'
 Plugin 'mattn/emmet-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
-Plugin 'klen/python-mode'
+Plugin 'python-mode/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
@@ -163,6 +163,7 @@ vnoremap <tab> %
 
 " Explorer open easy
 map <leader>o :NERDTreeToggle<cr>
+nnoremap <space> za
 
 " =============================================================================
 " -----------------------------------------------------------------------------
@@ -176,7 +177,7 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set textwidth=79
+"set textwidth=79
 set expandtab
 
 autocmd BufNewFile,BufRead *.vue   set tabstop=2
@@ -189,6 +190,8 @@ let g:vim_json_syntax_conceal = 0
 set conceallevel=0 "Hides json quotes for some godforsaken reason
 set cole=0 
 au FileType * setl cole=0 
+" Removes whitespace
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " =============================================================================
 " -----------------------------------------------------------------------------
